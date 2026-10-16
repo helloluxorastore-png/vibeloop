@@ -108,7 +108,34 @@ main{width:min(100%,650px);margin:0 auto;padding:17px 14px 100px}.hello{display:
 </div>
   <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
+    
+document.getElementById("signUpBtn").addEventListener("click", async () => {
+  const email = document.getElementById("authEmail").value.trim();
+  const password = document.getElementById("authPassword").value;
+  const message = document.getElementById("authMessage");
+
+  try {
+    await createUserWithEmailAndPassword(firebaseAuth, email, password);
+    message.textContent = "Account created successfully!";
+  } catch (error) {
+    message.textContent = error.message;
+  }
+});
+
+document.getElementById("loginBtn").addEventListener("click", async () => {
+  const email = document.getElementById("authEmail").value.trim();
+  const password = document.getElementById("authPassword").value;
+  const message = document.getElementById("authMessage");
+
+  try {
+    await signInWithEmailAndPassword(firebaseAuth, email, password);
+    message.textContent = "Logged in successfully!";
+  } catch (error) {
+    message.textContent = error.message;
+  }
+});
+
     const firebaseDB = getFirestore(firebaseApp);
     getDoc(doc(firebaseDB, "users", "testUser"))
   .then((snapshot) => {
@@ -150,5 +177,19 @@ function saveDraft(){const value=document.getElementById('captionInput').value.t
 function searchDemo(value){const q=value.trim().toLowerCase();document.querySelectorAll('#creatorResults .create-card').forEach(card=>{card.style.display=card.textContent.toLowerCase().includes(q)?'flex':''})}
 function topicSearch(topic){document.getElementById('searchInput').value=topic;searchDemo(topic);toast('Filtered demo creators where the topic matches.');}
 </script>
+  
+<div id="authPanel">
+  <h2>Welcome to VibeLoop</h2>
+  <p>Join the conversation.</p>
+
+  <input id="authEmail" type="email" placeholder="Email address">
+  <input id="authPassword" type="password" placeholder="Password">
+
+  <button id="signUpBtn" type="button">Create account</button>
+  <button id="loginBtn" type="button">Log in</button>
+
+  <p id="authMessage"></p>
+</div>
+
 </body>
 </html>
