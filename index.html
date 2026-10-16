@@ -17,7 +17,7 @@ main{width:min(100%,650px);margin:0 auto;padding:17px 14px 100px}.hello{display:
 .page{display:none}.page.active{display:block}.empty-state{text-align:center;padding:40px 18px;border:1px dashed var(--line);border-radius:18px;color:var(--muted)}.empty-state strong{display:block;color:var(--text);font-size:17px;margin:10px 0}.bottom-nav{position:fixed;z-index:20;bottom:0;left:0;right:0;padding:8px 8px max(8px,env(safe-area-inset-bottom));display:flex;justify-content:space-around;background:rgba(18,14,31,.94);backdrop-filter:blur(18px);border-top:1px solid #ffffff12}.nav-item{border:0;background:transparent;color:#8f87aa;min-width:55px;padding:5px 8px;border-radius:12px;font-size:10px;font-weight:700}.nav-item .nav-icon{display:block;font-size:20px;margin-bottom:3px}.nav-item.active{color:#c6aaff}.nav-item.active .nav-icon{filter:drop-shadow(0 0 8px #a276ff)}
 .toast{position:fixed;z-index:50;left:50%;bottom:90px;transform:translate(-50%,15px);opacity:0;pointer-events:none;background:#29213e;border:1px solid #59447f;color:#fff;padding:11px 15px;border-radius:12px;font-size:13px;box-shadow:0 12px 35px #0005;transition:.2s;max-width:90%;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}.modal-backdrop{position:fixed;inset:0;z-index:40;background:#05030bd9;display:none;align-items:flex-end;justify-content:center;padding:12px}.modal-backdrop.show{display:flex}.modal{width:min(100%,540px);background:#1b162b;border:1px solid var(--line);border-radius:22px;padding:18px;margin-bottom:65px}.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.modal h2{font-size:18px;margin:0}.close{border:1px solid var(--line);background:#ffffff0b;color:#fff;border-radius:10px;width:34px;height:34px}.field{display:block;width:100%;background:#100d1c;color:#fff;border:1px solid #3c3156;border-radius:12px;padding:12px;margin:10px 0;outline:none}.field:focus{border-color:var(--purple)}textarea.field{resize:vertical;min-height:90px}.hint{font-size:11px;color:var(--muted);line-height:1.5}.profile-hero{text-align:center;padding:24px 12px;background:linear-gradient(135deg,#292044,#172b43);border:1px solid var(--line);border-radius:20px}.profile-hero .avatar{width:68px;height:68px;margin:0 auto 12px;font-size:21px}.profile-hero h2{margin:0 0 5px}.profile-hero p{margin:0;color:var(--muted);font-size:13px}.stats{display:flex;justify-content:center;gap:28px;margin-top:20px}.stats strong{display:block;font-size:17px}.stats small{font-size:11px;color:var(--muted)}.searchbox{display:flex;gap:8px}.searchbox .field{margin:0}.topic{display:inline-block;padding:9px 12px;border:1px solid var(--line);background:var(--panel);color:#d9d0f0;border-radius:99px;font-size:12px;margin:5px 4px 0 0}.footer-note{text-align:center;font-size:10px;color:#756b91;margin:24px 0 5px}
 @media(min-width:700px){main{padding-top:26px}.video-art{aspect-ratio:16/10;min-height:330px}.bottom-nav{left:50%;right:auto;transform:translateX(-50%);width:min(100%,650px);border:1px solid #ffffff12;border-bottom:0;border-radius:18px 18px 0 0}.modal-backdrop{align-items:center}.modal{margin-bottom:0}}
-#authPanel {
+  #authPanel {
   position: relative;
   z-index: 9999;
   background: white;
@@ -42,7 +42,8 @@ main{width:min(100%,650px);margin:0 auto;padding:17px 14px 100px}.hello{display:
   width: 100%;
   padding: 12px;
   margin: 10px 0;
-}</style>
+}
+</style>
 </head>
   
 <body>
@@ -203,7 +204,7 @@ function searchDemo(value){const q=value.trim().toLowerCase();document.querySele
 function topicSearch(topic){document.getElementById('searchInput').value=topic;searchDemo(topic);toast('Filtered demo creators where the topic matches.');}
 </script>
   
-<div id="authPanel">
+<div id="authPanel" style="position:relative; z-index:9999;">">
   <h2>Welcome to VibeLoop</h2>
   <p>Join the conversation.</p>
 
