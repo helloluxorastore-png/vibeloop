@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#100d1c">
+<meta name="description" content="VibeLoop — watch it, try it, loop it.">
+<title>VibeLoop — Watch it. Try it. Loop it.</title>
+<style>
+:root{--bg:#100d1c;--panel:#19152a;--panel2:#211b36;--text:#f7f4ff;--muted:#aaa2c3;--purple:#9b6dff;--blue:#36c7ff;--line:#332a4d;--pink:#ff5db1}
+*{box-sizing:border-box}html{background:var(--bg);scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#34205b 0,transparent 38%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}
+button,input{font:inherit}button{cursor:pointer}.topbar{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:rgba(16,13,28,.9);backdrop-filter:blur(16px);border-bottom:1px solid #ffffff12}.brand{display:flex;align-items:center;gap:9px;font-weight:900;font-size:23px;letter-spacing:-.8px}.brand-mark{width:32px;height:32px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(135deg,var(--purple),var(--blue));box-shadow:0 0 24px #9264ff55;color:#100d1c;font-weight:1000}.brand span:last-child{background:linear-gradient(90deg,#c5a5ff,#69ddff);color:transparent;background-clip:text}.top-actions{display:flex;gap:8px}.icon-btn{width:39px;height:39px;border:1px solid var(--line);border-radius:13px;background:var(--panel);color:var(--text);font-size:18px}
+main{width:min(100%,650px);margin:0 auto;padding:17px 14px 100px}.hello{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:5px 0 17px}.eyebrow{font-size:11px;letter-spacing:1.7px;text-transform:uppercase;color:var(--blue);font-weight:800}.hello h1{font-size:27px;line-height:1.12;margin:5px 0 0;letter-spacing:-.8px}.hello p{margin:6px 0 0;color:var(--muted);font-size:13px}.avatar{height:42px;width:42px;flex:0 0 42px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#7d4bff,#2acbff);color:#fff;font-weight:900;border:2px solid #ffffff24}
+.tabs{display:flex;gap:8px;margin:18px 0 14px}.tab{border:1px solid var(--line);border-radius:99px;background:transparent;color:var(--muted);padding:9px 15px;font-size:13px;font-weight:750}.tab.active{background:linear-gradient(100deg,#8b5cf6,#367dff);border-color:transparent;color:#fff;box-shadow:0 5px 22px #754cff33}
+.prompt{position:relative;overflow:hidden;border:1px solid #8e65ff55;border-radius:20px;padding:17px;background:linear-gradient(120deg,#302052,#1b2c4b 110%);margin-bottom:17px}.prompt:after{content:"✦";position:absolute;right:16px;top:2px;font-size:70px;color:#ffffff0b}.prompt-head{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:850;letter-spacing:1.2px;text-transform:uppercase;color:#d7c6ff}.spark{display:grid;place-items:center;width:28px;height:28px;border-radius:9px;background:#ffffff16}.prompt h2{font-size:20px;line-height:1.25;max-width:390px;margin:12px 0 7px}.prompt p{font-size:13px;color:#d0c6e8;margin:0 0 15px}.primary{border:0;border-radius:12px;padding:11px 15px;background:linear-gradient(100deg,var(--purple),#477dff);color:#fff;font-size:13px;font-weight:850;box-shadow:0 7px 20px #754cff33}.section-head{display:flex;align-items:center;justify-content:space-between;margin:22px 1px 12px}.section-head h2{font-size:17px;margin:0}.section-head span{font-size:12px;color:var(--muted)}
+.create-card{display:flex;align-items:center;gap:11px;padding:13px;border:1px solid var(--line);border-radius:17px;background:linear-gradient(135deg,#1c172e,#171426);margin-bottom:19px}.create-card .create-copy{flex:1;min-width:0}.create-copy strong{display:block;font-size:13px}.create-copy small{display:block;margin-top:4px;color:var(--muted);font-size:11px}.plus{width:40px;height:40px;flex:0 0 40px;border:1px solid #a77bff55;border-radius:13px;background:#8c5cff20;color:#cdb8ff;font-size:24px}.post{overflow:hidden;border:1px solid var(--line);border-radius:19px;background:var(--panel);margin-bottom:16px}.post-head{display:flex;align-items:center;gap:10px;padding:13px 14px}.post-user{flex:1}.post-user strong{font-size:13px;display:block}.post-user small{font-size:11px;color:var(--muted)}.follow{border:1px solid #7e61d855;background:#7e61d81a;color:#c8b4ff;padding:7px 10px;border-radius:9px;font-size:11px;font-weight:800}.video-art{position:relative;min-height:310px;aspect-ratio:4/4.5;display:flex;align-items:flex-end;padding:17px;background:#21183a;isolation:isolate;overflow:hidden}.video-art:before,.video-art:after{content:"";position:absolute;z-index:-1;border-radius:50%;filter:blur(1px)}.art-one{background:radial-gradient(circle at 70% 25%,#ff9fbe 0,transparent 22%),linear-gradient(145deg,#37225d,#12172e 70%)}.art-one:before{width:210px;height:210px;right:-25px;top:25px;background:linear-gradient(135deg,#ff6db3,#795bff);opacity:.8}.art-one:after{width:170px;height:240px;right:60px;top:80px;border:2px solid #ffffff50;transform:rotate(22deg);border-radius:45% 45% 20% 20%}.art-two{background:radial-gradient(circle at 30% 25%,#66e4ff 0,transparent 23%),linear-gradient(145deg,#123d54,#1a163a 70%)}.art-two:before{width:230px;height:230px;left:25%;top:35px;background:linear-gradient(135deg,#32d5ff,#665bff);opacity:.75}.art-two:after{width:150px;height:150px;right:10%;top:95px;border:2px solid #ffffff80;transform:rotate(35deg);border-radius:35px}.art-three{background:radial-gradient(circle at 70% 30%,#ffda78 0,transparent 20%),linear-gradient(145deg,#57304b,#20162f 75%)}.art-three:before{width:200px;height:200px;left:22%;top:65px;background:linear-gradient(135deg,#ff9c5d,#ff5da8);opacity:.75}.art-three:after{width:155px;height:155px;left:30%;top:85px;border:2px solid #ffffff85;transform:rotate(15deg);border-radius:50%}.art-label{position:relative;z-index:1;text-shadow:0 2px 15px #0009}.art-label small{display:block;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#e4d9ff;font-weight:800}.art-label strong{display:block;font-size:26px;line-height:1.05;margin-top:7px;max-width:230px}.play{position:absolute;right:15px;top:15px;width:43px;height:43px;border-radius:50%;border:1px solid #ffffff70;background:#ffffff20;color:#fff;backdrop-filter:blur(10px);font-size:17px}.post-caption{padding:12px 14px 3px;font-size:13px;line-height:1.5;color:#eee8ff}.post-caption b{color:#fff}.post-actions{display:flex;gap:8px;padding:11px 12px 13px}.action{border:1px solid #ffffff0b;background:#ffffff06;color:#c9c2dc;border-radius:10px;padding:9px 11px;font-size:12px;flex:1}.action.liked{color:#ff78ba;background:#ff5db112;border-color:#ff5db144}.action span{margin-right:5px}
+.page{display:none}.page.active{display:block}.empty-state{text-align:center;padding:40px 18px;border:1px dashed var(--line);border-radius:18px;color:var(--muted)}.empty-state strong{display:block;color:var(--text);font-size:17px;margin:10px 0}.bottom-nav{position:fixed;z-index:20;bottom:0;left:0;right:0;padding:8px 8px max(8px,env(safe-area-inset-bottom));display:flex;justify-content:space-around;background:rgba(18,14,31,.94);backdrop-filter:blur(18px);border-top:1px solid #ffffff12}.nav-item{border:0;background:transparent;color:#8f87aa;min-width:55px;padding:5px 8px;border-radius:12px;font-size:10px;font-weight:700}.nav-item .nav-icon{display:block;font-size:20px;margin-bottom:3px}.nav-item.active{color:#c6aaff}.nav-item.active .nav-icon{filter:drop-shadow(0 0 8px #a276ff)}
+.toast{position:fixed;z-index:50;left:50%;bottom:90px;transform:translate(-50%,15px);opacity:0;pointer-events:none;background:#29213e;border:1px solid #59447f;color:#fff;padding:11px 15px;border-radius:12px;font-size:13px;box-shadow:0 12px 35px #0005;transition:.2s;max-width:90%;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}.modal-backdrop{position:fixed;inset:0;z-index:40;background:#05030bd9;display:none;align-items:flex-end;justify-content:center;padding:12px}.modal-backdrop.show{display:flex}.modal{width:min(100%,540px);background:#1b162b;border:1px solid var(--line);border-radius:22px;padding:18px;margin-bottom:65px}.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.modal h2{font-size:18px;margin:0}.close{border:1px solid var(--line);background:#ffffff0b;color:#fff;border-radius:10px;width:34px;height:34px}.field{display:block;width:100%;background:#100d1c;color:#fff;border:1px solid #3c3156;border-radius:12px;padding:12px;margin:10px 0;outline:none}.field:focus{border-color:var(--purple)}textarea.field{resize:vertical;min-height:90px}.hint{font-size:11px;color:var(--muted);line-height:1.5}.profile-hero{text-align:center;padding:24px 12px;background:linear-gradient(135deg,#292044,#172b43);border:1px solid var(--line);border-radius:20px}.profile-hero .avatar{width:68px;height:68px;margin:0 auto 12px;font-size:21px}.profile-hero h2{margin:0 0 5px}.profile-hero p{margin:0;color:var(--muted);font-size:13px}.stats{display:flex;justify-content:center;gap:28px;margin-top:20px}.stats strong{display:block;font-size:17px}.stats small{font-size:11px;color:var(--muted)}.searchbox{display:flex;gap:8px}.searchbox .field{margin:0}.topic{display:inline-block;padding:9px 12px;border:1px solid var(--line);background:var(--panel);color:#d9d0f0;border-radius:99px;font-size:12px;margin:5px 4px 0 0}.footer-note{text-align:center;font-size:10px;color:#756b91;margin:24px 0 5px}
+@media(min-width:700px){main{padding-top:26px}.video-art{aspect-ratio:16/10;min-height:330px}.bottom-nav{left:50%;right:auto;transform:translateX(-50%);width:min(100%,650px);border:1px solid #ffffff12;border-bottom:0;border-radius:18px 18px 0 0}.modal-backdrop{align-items:center}.modal{margin-bottom:0}}
+</style>
+</head>
+  
+<body>
+<header class="topbar">
+  <div class="brand"><div class="brand-mark">V</div><span>VibeLoop</span></div>
+  <div class="top-actions"><button class="icon-btn" aria-label="Search" onclick="navigate('discover')">⌕</button><button class="icon-btn" aria-label="Notifications" onclick="toast('Notifications will arrive in a later version.')">♧</button></div>
+</header>
+<main>
+  <section id="homePage" class="page active">
+    <div class="hello"><div><div class="eyebrow">YOUR DAILY DOSE OF VIBES</div><h1>Find your next<br><span style="background:linear-gradient(90deg,#c6a7ff,#66ddff);color:transparent;background-clip:text">favourite thing.</span></h1><p>Watch it. Try it. Loop it.</p></div><div class="avatar">VL</div></div>
+    <div class="tabs"><button class="tab active" data-feed="for-you" onclick="switchFeed('for-you',this)">For You</button><button class="tab" data-feed="following" onclick="switchFeed('following',this)">Following</button></div>
+    <div class="prompt"><div class="prompt-head"><span class="spark">✦</span> DAILY VIBE · TODAY</div><h2>Show us a skill you wish you learned sooner.</h2><p>One small idea can inspire somebody else. What's yours?</p><button class="primary" onclick="openCreate('daily')">＋ Join today's vibe</button></div>
+    <div class="create-card"><div class="avatar" style="width:39px;height:39px;flex-basis:39px">Y</div><div class="create-copy"><strong>Got a vibe to share?</strong><small>Start a post and inspire your people.</small></div><button class="plus" aria-label="Create post" onclick="openCreate('post')">＋</button></div>
+    <div class="section-head"><h2>Made for your feed</h2><span>Demo videos · <span id="postCount">3</span> posts</span></div>
+    <div id="feed">
+      <article class="post" data-following="false">
+        <div class="post-head"><div class="avatar">M</div><div class="post-user"><strong>@mila.moves</strong><small>Creative corner · 2h ago</small></div><button class="follow" onclick="toggleFollow(this)">＋ Follow</button></div>
+        <div class="video-art art-one"><div class="art-label"><small>MAKE SOMETHING</small><strong>Your next idea starts here.</strong></div><button class="play" onclick="toast('Demo preview: real video playback comes next.')">▶</button></div>
+        <div class="post-caption"><b>@mila.moves</b> Little reminder: you don't have to be perfect to start ✨ #DailyVibe</div>
+        <div class="post-actions"><button class="action" onclick="toggleLike(this)"><span>♡</span><b>Like</b> <span class="like-count">128</span></button><button class="action" onclick="toast('Comments will be connected to the database in the next stage.')"><span>▢</span> Comment</button><button class="action" onclick="sharePost()"><span>↗</span> Share</button></div>
+      </article>
+      <article class="post" data-following="true">
+        <div class="post-head"><div class="avatar" style="background:linear-gradient(135deg,#18a8c9,#665bff)">K</div><div class="post-user"><strong>@kay.creates</strong><small>Learn something · 5h ago</small></div><button class="follow" onclick="toggleFollow(this)">＋ Follow</button></div>
+        <div class="video-art art-two"><div class="art-label"><small>QUICK TIP</small><strong>Small steps. Big progress.</strong></div><button class="play" onclick="toast('Demo preview: real video playback comes next.')">▶</button></div>
+        <div class="post-caption"><b>@kay.creates</b> What's one useful thing you learned this week? Drop it below 💙</div>
+        <div class="post-actions"><button class="action" onclick="toggleLike(this)"><span>♡</span><b>Like</b> <span class="like-count">84</span></button><button class="action" onclick="toast('Comments will be connected to the database in the next stage.')"><span>▢</span> Comment</button><button class="action" onclick="sharePost()"><span>↗</span> Share</button></div>
+      </article>
+      <article class="post" data-following="false">
+        <div class="post-head"><div class="avatar" style="background:linear-gradient(135deg,#ff9b5e,#ff5da8)">T</div><div class="post-user"><strong>@thando.vibes</strong><small>Just for fun · 1d ago</small></div><button class="follow" onclick="toggleFollow(this)">＋ Follow</button></div>
+        <div class="video-art art-three"><div class="art-label"><small>YOUR TURN</small><strong>Make today a little brighter.</strong></div><button class="play" onclick="toast('Demo preview: real video playback comes next.')">▶</button></div>
+        <div class="post-caption"><b>@thando.vibes</b> Sending a little good energy to whoever needs it today 🌞</div>
+        <div class="post-actions"><button class="action" onclick="toggleLike(this)"><span>♡</span><b>Like</b> <span class="like-count">206</span></button><button class="action" onclick="toast('Comments will be connected to the database in the next stage.')"><span>▢</span> Comment</button><button class="action" onclick="sharePost()"><span>↗</span> Share</button></div>
+      </article>
+    </div>
+    <div class="footer-note">VibeLoop prototype · Demo content only</div>
+  </section>
+
+  <section id="discoverPage" class="page">
+    <div class="eyebrow">EXPLORE WHAT'S OUT THERE</div><h1 style="font-size:28px;margin:7px 0">Discover your vibe.</h1><p style="color:var(--muted);font-size:13px">Find ideas, interests, and creators worth following.</p>
+    <div class="searchbox"><input id="searchInput" class="field" placeholder="Search demo creators or topics..." oninput="searchDemo(this.value)"><button class="primary" onclick="searchDemo(document.getElementById('searchInput').value)">Search</button></div>
+    <div class="section-head"><h2>Explore topics</h2></div>
+    <div id="topics"><button class="topic" onclick="topicSearch('Creative')">🎨 Creative</button><button class="topic" onclick="topicSearch('Learn')">💡 Learn something</button><button class="topic" onclick="topicSearch('Fun')">😂 Fun</button><button class="topic" onclick="topicSearch('Music')">🎵 Music</button><button class="topic" onclick="topicSearch('Sport')">⚽ Sport</button><button class="topic" onclick="topicSearch('Style')">✨ Style</button></div>
+    <div class="section-head"><h2>Creators to discover</h2><span>Demo profiles</span></div>
+    <div id="creatorResults">
+      <div class="create-card"><div class="avatar">M</div><div class="create-copy"><strong>@mila.moves</strong><small>Creative ideas · 1.2k followers</small></div><button class="follow" onclick="toggleFollow(this)">＋ Follow</button></div>
+      <div class="create-card"><div class="avatar" style="background:linear-gradient(135deg,#18a8c9,#665bff)">K</div><div class="create-copy"><strong>@kay.creates</strong><small>Quick tips · 860 followers</small></div><button class="follow" onclick="toggleFollow(this)">＋ Follow</button></div>
+      <div class="create-card"><div class="avatar" style="background:linear-gradient(135deg,#ff9b5e,#ff5da8)">T</div><div class="create-copy"><strong>@thando.vibes</strong><small>Good energy · 2.4k followers</small></div><button class="follow" onclick="toggleFollow(this)">＋ Follow</button></div>
+    </div>
+    <div class="footer-note">Discovery is using sample content for now.</div>
+  </section>
+
+  <section id="createPage" class="page">
+    <div class="eyebrow">MAKE SOMETHING YOURS</div><h1 style="font-size:28px;margin:7px 0">Create a vibe.</h1><p style="color:var(--muted);font-size:13px">Your ideas could inspire somebody else.</p>
+    <div class="prompt" style="margin-top:20px"><div class="prompt-head">✦ TODAY'S PROMPT</div><h2>Show us a skill you wish you learned sooner.</h2><p>Keep it creative, kind, and safe.</p><button class="primary" onclick="openCreate('daily')">Answer today's prompt</button></div>
+    <div class="create-card"><div class="spark">＋</div><div class="create-copy"><strong>Start with a caption</strong><small>Draft a post locally in this demo.</small></div><button class="primary" onclick="openCreate('post')">Create</button></div>
+    <div class="empty-state"><div style="font-size:30px">▧</div><strong>Video uploads are coming next</strong>First we'll connect accounts and secure storage. This prototype doesn't upload or publish videos yet.</div>
+  </section>
+
+  <section id="inboxPage" class="page">
+    <div class="eyebrow">YOUR PEOPLE</div><h1 style="font-size:28px;margin:7px 0">Inbox</h1><p style="color:var(--muted);font-size:13px">A place for conversations and replies.</p>
+    <div class="empty-state" style="margin-top:22px"><div style="font-size:30px">✉</div><strong>Your inbox is waiting</strong>Messaging isn't connected yet. We'll add safe, real conversations after account and privacy features are in place.</div>
+  </section>
+
+  <section id="profilePage" class="page">
+    <div class="eyebrow">YOUR CORNER OF VIBELOOP</div><h1 style="font-size:28px;margin:7px 0 17px">Profile</h1>
+    <div class="profile-hero"><div class="avatar">Y</div><h2>Your VibeLoop</h2><p>@yourvibe · Demo profile</p><div class="stats"><div><strong id="profileLikes">0</strong><small>Likes given</small></div><div><strong id="profileFollows">0</strong><small>Following</small></div><div><strong id="profilePosts">0</strong><small>Your posts</small></div></div><button class="primary" style="margin-top:18px" onclick="toast('Profile editing will be added with user accounts.')">Edit profile</button></div>
+    <div class="section-head"><h2>About this prototype</h2></div><div class="create-card"><div class="spark">✦</div><div class="create-copy"><strong>Watch it. Try it. Loop it.</strong><small>We're building VibeLoop one working feature at a time.</small></div></div>
+  </section>
+</main>
+
+<nav class="bottom-nav" aria-label="Main navigation">
+  <button class="nav-item active" data-page="home" onclick="navigate('home')"><span class="nav-icon">⌂</span>Home</button>
+  <button class="nav-item" data-page="discover" onclick="navigate('discover')"><span class="nav-icon">⌕</span>Discover</button>
+  <button class="nav-item" data-page="create" onclick="navigate('create')"><span class="nav-icon">＋</span>Create</button>
+  <button class="nav-item" data-page="inbox" onclick="navigate('inbox')"><span class="nav-icon">✉</span>Inbox</button>
+  <button class="nav-item" data-page="profile" onclick="navigate('profile')"><span class="nav-icon">◉</span>Profile</button>
+</nav>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<div id="modalBackdrop" class="modal-backdrop" onclick="if(event.target===this)closeModal()">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-head"><h2 id="modalTitle">Create a post</h2><button class="close" onclick="closeModal()" aria-label="Close">×</button></div>
+    <label for="captionInput" class="hint">Your caption</label><textarea id="captionInput" class="field" maxlength="240" placeholder="What vibe are you sharing?"></textarea>
+    <div id="dailyHint" class="hint" style="display:none">Daily Vibe: Show us a skill you wish you learned sooner.</div>
+    <button class="primary" style="width:100%;margin-top:12px" onclick="saveDraft()">Save draft on this device</button>
+    <p class="hint" style="margin-bottom:0">This first prototype saves drafts only in the current page session. It does not publish anything online.</p>
+  </div>
+</div>
+  <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
+    const firebaseDB = getFirestore(firebaseApp);
+    getDoc(doc(firebaseDB, "users", "testUser"))
+  .then((snapshot) => {
+    if (snapshot.exists()) {
+      alert("Firebase reached! Test document found.");
+    } else {
+      alert("Firebase reached, but test document not found.");
+    }
+  })
+  .catch((error) => {
+    alert("Firebase test result: " + error.code);
+  });
+import { getFirestore } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
+    import { doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
+const firebaseConfig = {
+  apiKey: "AIzaSyAWPVj-XIvnc2S79jVbNjcjVAMPMMiwq5g",
+  authDomain: "vibeloop-d1408.firebaseapp.com",
+  projectId: "vibeloop-d1408",
+  storageBucket: "vibeloop-d1408.firebasestorage.app",
+  messagingSenderId: "494934558215",
+  appId: "1:494934558215:web:8dd05a12acec25b0d88ca2"
+};
+  </script>
+<script>
+  let toastTimer;
+let currentMode='post';
+let likedCount=0;
+let followedCount=0;
+let draftCount=0;
+function toast(message){const el=document.getElementById('toast');el.textContent=message;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),2600)}
+function navigate(page){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));const target=document.getElementById(page+'Page');if(target)target.classList.add('active');document.querySelectorAll('.nav-item').forEach(b=>b.classList.toggle('active',b.dataset.page===page));window.scrollTo({top:0,behavior:'smooth'});if(page==='create')document.getElementById('captionInput').value=''}
+function toggleLike(button){const liked=button.classList.toggle('liked');const count=button.querySelector('.like-count');const icon=button.querySelector('span');if(liked){icon.textContent='♥';count.textContent=String(Number(count.textContent)+1);likedCount++}else{icon.textContent='♡';count.textContent=String(Number(count.textContent)-1);likedCount=Math.max(0,likedCount)}document.getElementById('profileLikes').textContent=likedCount}
+function toggleFollow(button){const isFollowing=button.dataset.following==='true';button.dataset.following=String(!isFollowing);button.textContent=isFollowing?'＋ Follow':'✓ Following';button.style.background=isFollowing?'#7e61d81a':'#36c7ff18';button.style.color=isFollowing?'#c8b4ff':'#7de4ff';followedCount+=isFollowing?-1:1;document.getElementById('profileFollows').textContent=followedCount}
+async function sharePost(){if(navigator.share){try{await navigator.share({title:'VibeLoop',text:'Check out this VibeLoop concept!'})}catch(e){}}else if(navigator.clipboard){navigator.clipboard.writeText(location.href).then(()=>toast('Page link copied (if browser permissions allow).')).catch(()=>toast('Sharing will be added in a later version.'))}else toast('Sharing will be added in a later version.')}
+function switchFeed(mode,button){document.querySelectorAll('.tabs .tab').forEach(t=>t.classList.remove('active'));button.classList.add('active');document.querySelectorAll('#feed .post').forEach(post=>{post.style.display=(mode==='following'&&post.dataset.following!=='true')?'none':''});toast(mode==='following'?'Showing sample posts from followed creators.':'Showing all sample posts.')}
+function openCreate(mode){currentMode=mode;document.getElementById('modalTitle').textContent=mode==='daily'?'Join today’s Daily Vibe':'Create a post';document.getElementById('dailyHint').style.display=mode==='daily'?'block':'none';document.getElementById('captionInput').value=mode==='daily'?'My skill I wish I learned sooner is…':'';document.getElementById('modalBackdrop').classList.add('show');setTimeout(()=>document.getElementById('captionInput').focus(),100)}
+function closeModal(){document.getElementById('modalBackdrop').classList.remove('show')}
+function saveDraft(){const value=document.getElementById('captionInput').value.trim();if(!value){toast('Add a caption first.');return}draftCount++;document.getElementById('profilePosts').textContent=draftCount;closeModal();toast('Draft saved for this session. Online publishing comes later.')}
+function searchDemo(value){const q=value.trim().toLowerCase();document.querySelectorAll('#creatorResults .create-card').forEach(card=>{card.style.display=card.textContent.toLowerCase().includes(q)?'flex':''})}
+function topicSearch(topic){document.getElementById('searchInput').value=topic;searchDemo(topic);toast('Filtered demo creators where the topic matches.');}
+</script>
+</body>
+</html>
